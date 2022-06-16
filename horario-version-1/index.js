@@ -6,15 +6,17 @@ const cursosElegidos = ["BMA20M","CIB12N","EE648O","EE458O","EE528M","EE530P"]
 
 function generarHorario(arrCursos) {
   const infoCursos = getInfoCursos(arrCursos)
-  const cursosNoPermitidos = checkConsecutivos(infoCursos)
+  const cursosNoConsecutivos = checkConsecutivos(infoCursos)
+  console.log('Cursos que no pertenecen a 3 ciclos consecutivos')
+  console.log(cursosNoConsecutivos)
   //infoHoras = [{'Codigo': 'BMA20', 'Horas': [{T}, {P}, {L}]},{}, {}]
-  console.log(cursosNoPermitidos)
   const infoHoras = getTodasHoras(infoCursos)
-  //coordenadas
-  const horarioOrdenado = ordenarHoras(infoHoras)
-  const horarioFinal = checkCruces(horarioOrdenado)
-
-  console.log(requisitoMatricula)
+  //coordenadas [[horaLunes:{},{}], [horaMartes], ...]
+  const horarioOrdenado = ordenarHoras(infoHoras) //Hecho
+  const cursosNoPermitidos = [cursosNoConsecutivos, checkCruces(horarioOrdenado, infoCursos)]
+  //horario Final y listo para imprimir la tabla
+  const horarioGenerado = generadorHorario(infoCursos)
+  console.log(horarioGenerado)
   return
 }
 

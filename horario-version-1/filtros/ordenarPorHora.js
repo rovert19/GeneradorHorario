@@ -1,18 +1,15 @@
-//const horaMinima = 7
-//const horaMaxima = 20
-
+//Cambiar de nombre a ordernarHorasCursos
 export function ordenarHoras (infoHorasCursos) {
-  const horasCursos = []
+  const horasPorDia = []
 
   for (let dia=0; dia < 6; dia++) {
-    horasOrdenadas
+    horasPorDia
       .push(infoHorasCursos
         .filter(tipoCurso => tipoCurso['Día'] === dia))
   }
-
-  horasCursos.map(cursosDia => {
-    cursosDia = cursosDia.sort((a, b) => a.Hora - b.Hora)
-  })
+  const horasOrdenadas = horasPorDia
+    .map(cursosDia => cursosDia
+      .sort((a, b) => a.Hora - b.Hora))
   
-  return horasCursos
+  return horasOrdenadas
 }

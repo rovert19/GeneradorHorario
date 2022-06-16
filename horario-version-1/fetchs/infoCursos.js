@@ -1,6 +1,6 @@
 import horario_carrera from './fetchCarrera'
 import * as horario from '../horario.json'
-import { day } from '../filtros/constantes'
+import { day } from '../constantes'
 //const horario = require('../horario.json')
 console.log(horario_carrera[0].Ciclo)
 
@@ -62,8 +62,10 @@ export function getCursoCiclo (infoCursos) {
 
 export function getTodasHoras (infoCursos, listCursos) {
   const cursos = infoCursos.values()
+  //cursos = Array.from(infoCursos.values()) es una opcion 
+  //pero se conocio un poco de iteradores
   const arrHoras = []
-
+  let index = 0
   let result = cursos.next()
   while (!result.done){
     result.value.Horas.forEach(horaTipoCurso => {
@@ -71,6 +73,7 @@ export function getTodasHoras (infoCursos, listCursos) {
       arrHoras.push(horaTipoCurso)
     })
     result = cursos.next()
+    index++
   }
   return arrHoras
 }
