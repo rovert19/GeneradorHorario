@@ -83,7 +83,7 @@ export function getTodasHoras (infoCursos, listCursos) {
             Codigo: 'BFI01M',
             "Tipo": "T",
             "Día": "LU" = 0,
-            "Hora": 10:00,
+            "Hora": 10,
             Rango: 2,
           },]
 

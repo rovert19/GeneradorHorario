@@ -13,11 +13,11 @@ function generarHorario(arrCursos) {
   const infoHoras = getTodasHoras(infoCursos)
   //coordenadas [[horaLunes:{},{}], [horaMartes], ...]
   const horarioOrdenado = ordenarHoras(infoHoras) //Hecho
-  const cursosNoPermitidos = [cursosNoConsecutivos, checkCruces(horarioOrdenado, infoCursos)]
+  const cursosNoPermitidos = [cursosNoConsecutivos, checkCruces(horarioOrdenado)]
   //horario Final y listo para imprimir la tabla
   const horarioGenerado = generadorHorario(infoCursos)
   console.log(horarioGenerado)
-  return
+  return cursosNoPermitidos
 }
 
 console.time('Genera los cursos')
