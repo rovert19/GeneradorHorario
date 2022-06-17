@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 import { checkConsecutivos } from "../filtros/ciclos-consecutivos"
 import { ordenarHoras } from "./filtros/ordenarPorHora"
 import { getTodasHoras, getInfoCursos } from "./fetchs/infoCursos"
