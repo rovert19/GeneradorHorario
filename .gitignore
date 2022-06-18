@@ -1,5 +1,11 @@
 //archivos sin importancia
 noUtil.js
 
-//config
+//configs
 package.json
+node_modules
+package-lock.json
+webpack.config.js
+
+//build
+dist
