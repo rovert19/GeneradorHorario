@@ -13,6 +13,9 @@ package.json
 
 #Configuracion
 package-lock.json
+
+//config-dev
+package.json
 webpack.config.js
 .eslintrc.json
 
