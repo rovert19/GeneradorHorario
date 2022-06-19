@@ -1,7 +1,7 @@
 //import horario_carrera from './fetchCarrera'
 import * as horario from '../horario.json'
 import { day } from '../constantes'
-//const horario = require('../horario.json')
+
 const dataHorario = Array.from(horario)
 
 function searchCurso (codigo) {
@@ -9,7 +9,7 @@ function searchCurso (codigo) {
   .filter(curso => curso.Codigo === codigo ? curso : undefined)[0]
 }
 
-function procesadoSeccion (horasSeccionInfo) {
+function procesarSeccion (horasSeccionInfo) {
   const seccionProcesada = horasSeccionInfo.map(seccionInfo => {
     return {
       Tipo: seccionInfo.Tipo,
@@ -21,31 +21,32 @@ function procesadoSeccion (horasSeccionInfo) {
   return seccionProcesada
 }
 
-function getInfoCurso (codigo, seccion) {
-  const data = searchCurso(codigo)
-  if (!data){
-    console.warn(`Este curso de codigo ${codigo} no existe`)
-    return {}
-  }
-  const seccionProcesada = procesadoSeccion(data.Secciones[seccion])
-
-  return {
-    Ciclo: data.Ciclo,
-    Nombre: data.Nombre,
-    Seccion: seccion,
-    Horas: seccionProcesada,
-    //Abre: data.AbreCursos
-  }
+function getInfoCurso (curso, seccion) {
+  const seccionesCurso = curso.Secciones
+  const seccionesProcesadas = seccion === '' ?  
+    Object.keys(seccionesCurso).map(secc => procesarSeccion(seccionesCurso[secc])) : 
+    [procesarSeccion(seccionesCurso[seccion])]
+  //Abre: data.AbreCursos
+  return [ { Ciclo: curso.Ciclo, Nombre: curso.Nombre }, seccionesProcesadas]
 }
 
 export function getInfoCursos (codigos) {
   const infoCursos = new Map()
+  const infoSecciones = new Map()
   codigos.map(cod => {
-    const codigo = cod.slice(0, -1)
-    const seccion = cod.slice(-1)
-    infoCursos.set(codigo, getInfoCurso(codigo, seccion)) 
+    let seccion = ''
+    if (Number.isNaN(Number(cod.slice(-1)))){
+      seccion = cod.slice(-1)
+      cod = cod.slice(0,-1)
+    }
+    const curso = searchCurso(cod)
+    if(!curso) return
+    const [ cursoInfo, seccionesInfo ] = getInfoCurso(curso, seccion)
+    infoCursos.set(cod, cursoInfo) // quiero que de -> BMA20 : [infoCurso]   -> Secciones = BMA20 : [infosecciones]
+    infoSecciones.set(cod, seccionesInfo)
   })
-  return infoCursos
+  console.log(infoSecciones.get('BMA20'))
+  return { infoCursos, infoSecciones }
 }
 
 export function getCursoCiclo (infoCursos) {
@@ -77,14 +78,3 @@ export function getTodasHoras (infoCursos, listCursos) {
   }
   return arrHoras
 }
-
-/*
-[{
-            Codigo: 'BFI01M',
-            "Tipo": "T",
-            "Día": "LU" = 0,
-            "Hora": 10,
-            Rango: 2,
-          },]
-
-*/

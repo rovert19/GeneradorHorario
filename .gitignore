@@ -2,10 +2,13 @@
 noUtil.js
 
 //configs
-package.json
 node_modules
 package-lock.json
+
+//config-dev
+package.json
 webpack.config.js
+.eslintrc.json
 
 //build
 dist
