@@ -1,11 +1,20 @@
-//archivos sin importancia
+#archivos sin importancia
 noUtil.js
 
-//configs
-package.json
+#Archivos y directorios de sistema
+
+
+#Variables de entorno
+
+
+#Directorios de instalacion y caché
 node_modules
+package.json
+
+#Configuracion
 package-lock.json
 webpack.config.js
+.eslintrc.json
 
-//build
+#Generado
 dist
