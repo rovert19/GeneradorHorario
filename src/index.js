@@ -51,7 +51,7 @@ function clasificarHorario(allCombos, totalInfoCruces) {
   combosModificar.push(...combosPosibles)
   infoCrucesMod.push(...infoCrucesPosibles)
   const len = combosModificar.length > 100 ?  20 
-              : combosModificar.length > 10 ? 10 : 5  
+              : combosModificar.length > 10 ? 10 : combosModificar.length
   return [combosSinCruce,
           [combosCruceTipo1, infoCrucesTipo1],
           [combosCruceTipo2, infoCrucesTipo2],
