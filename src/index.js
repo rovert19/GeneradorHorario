@@ -1,5 +1,4 @@
 import { generarHorario } from './generador'
-
 //                         2       2        5       2         2       6  =  max 480
 const cursosElegidos = ["BMA20","CIB12","EE648","EE644M","EE528","EE530O"]
 
@@ -23,7 +22,7 @@ function clasificarHorario(allCombos, totalInfoCruces) {
     }
   })
   if (combosPosibles.length !== 0) {
-    combosPosibles.filter((combo, index) => {
+    combosPosibles.filter((_, index) => {
       if (infoCrucesPosibles[index][2].Cantidad === 0) {
         if (infoCrucesPosibles[index][1].Cantidad === 0) {
           combosSinCruce.push(...combosPosibles.splice(index, 1))

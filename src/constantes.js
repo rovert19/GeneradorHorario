@@ -11,7 +11,7 @@ export const day = {
 export const tipos = {
   T: 'Teoría',
   P: 'Práctica',
-  L: 'Laboratorio'
+  L: 'Labo'
 }
 
 export const horasLimite = {
