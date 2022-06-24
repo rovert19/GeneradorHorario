@@ -20,7 +20,7 @@ class MyElement extends LitElement {
   .container {
     display: flex;
     justify-content: space-around;
-    border: 1px gray solid;
+    border: 1px var(--color-design-horario) solid;
     margin: auto;
     width: 695px;
     height: 805px;
@@ -31,18 +31,29 @@ class MyElement extends LitElement {
     display: flex;
     flex-direction: column;
     text-align: center;
-    border: 1px gray solid;
+    border-top-style: none;
+    border-bottom-style: none;
+    padding: 0.5px 0;
     margin-left: auto;
     width: 80px;
     height: 800px;
   }
   .hora {
     width: 80px;
-    border: 1px gray solid;
+    border: 1px var(--color-cell-horario) solid;
     padding: 10px 0px;
     height: 30px;
     text-align: center;
     font-size: 12px;
+  }
+  .container-preview {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding: 0.5px 20px;
+    background-color: var(--color-design-horario); //luego lo asignaremos
+    border-radius: 20px;
+    width: 50%;
   }
   `
 
@@ -129,7 +140,7 @@ class MyElement extends LitElement {
     <br>
     <h3>Mostrando los cursos</h3>
     <p>Total de cursos: ${this.listCursos.length}</p>
-    <ul @click=${this.handleclick}>
+    <ul @click=${this.handleclick} class="container-preview">
       ${this.listCursos.map((curso, index) => {
         return html`<show-curso .curso=${curso} .index=${index}></show-curso>`
       })

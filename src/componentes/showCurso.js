@@ -6,10 +6,16 @@ class ShowCurso extends LitElement {
     index: {type: Number},
   }
   static styles = css`
-    li {
-      display: block;
-      border: 2px deepskyblue solid;
+    :host {
       margin: auto;
+      padding: 5px 0; 
+    }
+    li {
+      list-style-type: none;
+      width: 100%;
+      font-size: 0.95em;
+      color: #3c3c3c;
+      text-align: center;
     }
   `
   render() {

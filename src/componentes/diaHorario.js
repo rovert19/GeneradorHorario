@@ -12,18 +12,22 @@ class DiaHorario extends LitElement {
   static styles = css`
   .dia {
     text-align: center;
+    height: 20px;
+    font-size: 0.8rem;
   }
   .container-day {
     display: flex;
     flex-direction: column;
-    border: 1px gray solid;
+    border-color: gray;
+    border-style: none solid;
+    border-width: 0.5px;
     margin: auto;
     width: 100px;
     height: 800px;
   }
   .container-curso-hora {
-    width: 100px;
     display:flex;
+    width: 100px;
     flex-direction: column;
     border-bottom: 1px gray solid;
     border-top: 1px gray solid;
@@ -35,7 +39,7 @@ class DiaHorario extends LitElement {
     margin: auto 0;
     width: 96px;
     height: 15px;
-    font-size: 10px;
+    font-size: 0.6rem;
     padding: 5px 2px;
   }
   `
